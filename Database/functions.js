@@ -1,5 +1,17 @@
 const db = require("./initilaize")
 
+const resetalldocs = () => {
+    const collection = await db
+          .collection(process.env.COLLECTION_NAME)
+          .get()
+        collection.forEach(doc=> {
+          doc.ref
+            .update({
+                uploads: 0
+            })
+        })
+}
+
 const getDoc = (doc_id) => {
     return new Promise(async (resolve, reject) => {
         const limitRef = db.collection(process.env.COLLECTION_NAME).doc(doc_id);
@@ -38,4 +50,4 @@ const createDoc = (data) => {
     }) 
 }
 
-module.exports = {getDoc, setDoc, createDoc}
+module.exports = {getDoc, setDoc, createDoc, resetalldocs}

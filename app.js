@@ -3,6 +3,7 @@ require('dotenv').config()
 const port = process.env.PORT
 const cors = require('cors');
 const express = require('express');
+const resetUplods = require('./Database/resetUploads');
 const Auth_Middleware = require('./Middleware/Firebase/Firebase_Auth');
 const router = require('./Router/router')
 
@@ -46,6 +47,8 @@ app.get('*', (req, res) => {
     })
   }
 })
+
+resetUplods()
 
 app.listen(port, 'localhost', () => {
     console.log(`app running on port ${port}`)
