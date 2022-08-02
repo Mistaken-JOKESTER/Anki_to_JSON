@@ -10,11 +10,9 @@ const Auth_Middleware = require('../Middleware/Firebase/Firebase_Auth')
 
 const router = require('express').Router()
 
-router.post('/convert',filesUpload, async (req, res, next) => {
-    req.uid=" 24249dsfdsfsfj32k4j23423"
+router.post('/convert', Auth_Middleware, filesUpload, async (req, res, next) => {
     req.user_doc = null
     uid = req.uid
-    console.log(uid)
     const doc_exesist = await getDoc(uid)
 
     if(!req.file){
