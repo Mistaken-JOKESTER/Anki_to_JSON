@@ -1,6 +1,6 @@
 const db = require("./initilaize")
 
-const resetalldocs = () => {
+const resetalldocs = async () => {
     const collection = await db
           .collection(process.env.COLLECTION_NAME)
           .get()
