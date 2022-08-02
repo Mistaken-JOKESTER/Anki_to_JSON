@@ -91,8 +91,8 @@ const ankiToJson = (inputFile) => {
                         note.media = []
     
                         const notes_fileds = note.flds.split('\u001f')
-                        note.front = note.sfld.replaceAll('\t', '\n').replace(/\n+/g, '\n')
-                        note.back = note.flds.replaceAll('\u001f', '\n').replace(/\n+/g, '\n')
+                        note.front = note.sfld.replaceAll('\t', '\n').replace(/\n+/g, '<br>')
+                        note.back = note.flds.replaceAll('\u001f', '\n').replace(/\n+/g, '<br>')
                         let openBracketIndexes = []
                         let closedBracketIndexes = []
                         // FRONT
@@ -152,7 +152,7 @@ const ankiToJson = (inputFile) => {
                         for (let key = 0; key < fileds_name.length; key++) {
                             note.flds[fileds_name[key]] = parse(notes_fileds[key])
                         }
-    
+                        
                         if (note.front)
                             note.front = parse(note.front)
                         if (note.back)
