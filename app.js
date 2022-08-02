@@ -3,8 +3,8 @@ require('dotenv').config()
 const port = process.env.PORT
 const cors = require('cors');
 const express = require('express');
-const resetUplods = require('./Database/resetUploads');
 const Auth_Middleware = require('./Middleware/Firebase/Firebase_Auth');
+const resetUplods = require('./Database/resetUploads');
 const router = require('./Router/router')
 
 const app = express()
